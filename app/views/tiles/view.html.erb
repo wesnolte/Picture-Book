@@ -1,21 +1,15 @@
-<div>
-  
-  <div class="img_container">
-  </div>
     
   <% @urls.each do |url| %>
-    
-    <%= raw Rinku.auto_link(url, mode=:all, link_attr=nil, skip_tags=nil) %>
-    
-    <div id="<%= URI.escape(CGI.escape(url),".") %>" class="url_img">
-
-    </div>
-    
-  <% end %>
   
+    <span class="url_img" id="<%= URI.escape(CGI.escape(url),".") %>" >
+
+    </span>
+  
+  <% end %>
+
   <script type="text/javascript">
-      $('body .url_img').each(function(){
-        $this = $(this);
+      $('.url_img').each(function(){
+        var $this = $(this);
         var id = $this.attr('id');
         
         console.log(id);
@@ -31,7 +25,7 @@
     
           for( var i = 0; i < arr.length; i++){
             $img = $('<img />').attr('src',arr[i]);
-            console.log($img);
+
             $this.append($img);
 
           }

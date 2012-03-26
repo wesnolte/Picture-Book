@@ -8,9 +8,11 @@ class ScraperController < ApplicationController
     agent = Mechanize.new
     page = agent.get(url) 
     
-    @images = []  
+    @images = [] 
+    biggest_img = ''
+    largest_dimension = 0 
     
-    page.image_urls.each do |img_url|
+    page.image_urls.compact.each do |img_url|
       img = img_url.to_s
       
       if img.nil? then
@@ -18,10 +20,20 @@ class ScraperController < ApplicationController
       end
       
       if !img.include? 's.ytimg.com' then
-        @images << img
-        puts img
+        ds = FastImage.size(img)
+        puts 'ds: ' + ds.inspect
+        w = ds[0]
+        h = ds[1]
+        if w >= 50 && h >= 50 then
+          if (w + h) > largest_dimension then
+            largest_dimension = w + h
+            biggest_img = img
+          end
+        end
       end
     end
+    
+    @images << biggest_img
     
     respond_to do |format|
       format.html { render :json => @images }

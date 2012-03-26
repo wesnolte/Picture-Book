@@ -16,8 +16,8 @@ class TilesController < ApplicationController
         @urls << status.media[0]
       end
       
-      if !status.expanded_urls.empty? then
-        
+      if !status.expanded_urls[0].blank? then
+
         #ignore youtube
         if !status.expanded_urls[0].include?('youtube') then
           status_media[status.text + '::u'] = status.expanded_urls          

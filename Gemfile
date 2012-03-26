@@ -23,6 +23,8 @@ gem 'jquery-rails'
   gem 'mechanize', '2.3'
   gem 'rinku', :git => 'git://github.com/tanoku/rinku.git'
   gem "twitter-bootstrap-rails"  
+  gem 'fastimage', :git => 'git://github.com/sdsykes/fastimage.git'
+  gem 'unicorn'
 
 group :test do
   # Pretty printed test output
