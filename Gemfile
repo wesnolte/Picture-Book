@@ -22,6 +22,7 @@ gem 'jquery-rails'
   gem 'twitter'
   gem 'mechanize', '2.3'
   gem 'rinku', :git => 'git://github.com/tanoku/rinku.git'
+  gem "twitter-bootstrap-rails"  
 
 group :test do
   # Pretty printed test output
