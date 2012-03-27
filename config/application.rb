@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-APP_CONFIG = YAML.load_file(File.expand_path("config/config.yml"))
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -45,6 +44,8 @@ module PictureBook
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'  
+    
+    APP_CONFIG = YAML.load_file(File.open(Rails.root.join("config/config.yml")))
     
     # OAuth with twitter
     Twitter.configure do |config|
